@@ -34,7 +34,7 @@ int main() {
 
 ### System Call : Wait()
 ```c
-pid_t wait(int *stat_loc);
+pid_t pid_result = wait(int *status_pointer);
 ```
 When called by a process with one or more children:
 - Waits (if needed) for a child to terminate
@@ -125,19 +125,61 @@ for(i = 0; i < 5; i++) {
 }
 ```
 
+### System Call : Waitpid()
+- Waiting for a specific process.
+- When parent has more than one child, or you want to check for exited child but not block
+```c
+pid_t pid_result = waitpid(child_pid, &status, options);
+```
+- child_pid :
+    -   -1 means any child
+    -   pid of Specific child
+- status : Same as wait call.
+- options : 
+    - 0 = no options, wait until child exits
+    - WNOHANG = don't wait, just check
+- Return Value:
+    - pid of child, if child has exited
+    - 0, if using WNOHANG and child hasn't exited.
 
+### Example Program 5
+Can use waitpid() to reap children in order.
+```c
+int i, status;
+pid_t pid[5];
+for (i = 0; i < 5; i++) {
+    if ((pid[i] = fork()) == 0) {
+        sleep(1);
+        exit(100+i);
+    }
+}
+for (i = 0; i < 5; i++) {
+    pid_t child_pid = waitpid(pid[i], &status, 0);
+    if (WIFEXITED(status)) {
+        printf(“Child %d terminated with status: %d\n”, child_pid, WEXITSTATUS(status));
+    }
+}
+```
 
+### Zombie Process
+What should happen if dead child processes are never reaped? That is, the parent has not waited() on them.
+1. The OS should remove them from the process table.
+2. The OS should leave them in the process table.
+3. Do nothing.
 
+**Zombie Process** : A process that has terminated but not been
+reaped by its parent (Also known as defunct process).
 
+**Dead Process** are still tracked by OS
+- Parent may still reap them, want to know status.
+- Don't want to re-use the Process ID yet.
 
+### Reaping children
+- Parents are responsible for reaping their children
+- What should happen if parent terminates without reaping its children?
+- Who reaps the children?
 
-
-
-
-
-
-###
-###
-###
-###
-
+**Orphaned Processes** : A process that has not been reaped by its
+terminated parent.
+- Orphaned processes are adopted by the OS kernel
+- ... and the kernel always reaps its children.
