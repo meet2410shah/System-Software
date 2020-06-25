@@ -118,9 +118,9 @@ for(i = 0; i < 5; i++) {
     }
 }
 for(i = 0; i < 5; i++) {
-    pid_t cpid = wait(&stat);
+    pid_t cpid = wait(&status);
     if (WIFEXITED(status)) {
-        printf(“Child %d terminated with status: %d\n”, cpid, WEXITSTATUS(status));
+        printf("Child %d terminated with status: %d\n", cpid, WEXITSTATUS(status));
     }
 }
 ```
