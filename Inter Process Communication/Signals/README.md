@@ -120,6 +120,8 @@ using fg command which sends (SIGCONT) signal to resume
 - For background process can't use Ctrl+C, Ctrl+Z etc. hence kill
 command is used
 - how one can run process in background ? Using bg command
+
+### Signal Handling 
 - kill [options] pid
     * --l lists all signals you can send
     * --signal number
