@@ -1,8 +1,8 @@
 /* To compile this program use the following command */
-/* $ gcc -pthread 17_semaphore1_example9.c -o 17_semaphore1_example9.o */
+/* $ gcc -pthread Program16.c -o Program16.o */
 
 /* To run this program use the following command */
-/* $ ./17_semaphore1_example9.o */
+/* $ ./Program16.o */
 
 #include <stdio.h>
 #include <string.h>

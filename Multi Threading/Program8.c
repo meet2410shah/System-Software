@@ -23,12 +23,8 @@ int main()
 {
   pthread_t tid;
   void *ptr = NULL;
-
   pthread_create(&tid, NULL, get_rand_num, NULL);
-
   pthread_join(tid, &ptr);
-
   printf("Random number from main thread: %d\n", *(int *)ptr);
-
   return 0;
 }

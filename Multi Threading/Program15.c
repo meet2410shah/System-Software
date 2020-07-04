@@ -1,8 +1,8 @@
 /* To compile this program use the following command */
-/* $ gcc -pthread 15_thread_racecond_with_mutex_example7.c -o 15_thread_racecond_with_mutex_example7.o */
+/* $ gcc -pthread Program15.c -o Program15.o */
 
 /* To run this program use the following command */
-/* $ ./15_thread_racecond_with_mutex_example7.o */
+/* $ ./Program15.o */
 
 #include <stdio.h>
 #include <stdlib.h>

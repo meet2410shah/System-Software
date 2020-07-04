@@ -1,8 +1,8 @@
 /* To compile this program use the following command */
-/* $ gcc -pthread 18_dining_philosopher_example10.c -o 18_dining_philosopher_example10.o */
+/* $ gcc -pthread Program17.c -o Program17.o */
 
 /* To run this program use the following command */
-/* $ ./18_dining_philosopher_example10.o */
+/* $ ./Program17.o */
 
 #include <pthread.h>
 #include <semaphore.h>

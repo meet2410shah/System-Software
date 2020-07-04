@@ -1,8 +1,8 @@
 /* To compile this program use the following command */
-/* $ gcc -pthread 10_thread_example2.c -o 10_thread_example2.o */
+/* $ gcc -pthread Program10.c -o Program10.o */
 
 /* To run this program use the following command */
-/* $ ./10_thread_example2.o */
+/* $ ./Program10.o */
 
 #include <stdio.h>
 #include <stdlib.h>

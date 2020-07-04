@@ -38,34 +38,48 @@ int main(void)
   void *tret;
 
   printf("Main thread is %u \n", (unsigned int)pthread_self());
+
+  // Creation of First Thread
   err = pthread_create(&tid1, NULL, thr_fn1, NULL);
-
   if (err != 0)
+  {
     printf("cannot create thread-1: %s\n", strerror(err));
+  }
   else
+  {
     printf("child thread %u is created\n", (unsigned int)tid1);
+  }
 
+  // Creation of Second Thread
   err = pthread_create(&tid2, NULL, thr_fn2, NULL);
-
   if (err != 0)
+  {
     printf("cannot create thread-2: %s\n", strerror(err));
+  }
   else
+  {
     printf("child thread %u is created\n", (unsigned int)tid2);
+  }
 
+  // Wait for First Thread to Complete
   printf("main thread %u will wait for child thread %u\n", (unsigned int)pthread_self(), (unsigned int)tid1);
   err = pthread_join(tid1, &tret);
-
   if (err != 0)
+  {
     printf("cannot join with thread-1: %s\n", strerror(err));
-
+  }
   printf("child thread %u exit code %d\n", (unsigned int)tid1, (int)tret);
+
+  // Wait for Second Thread to Complete
   printf("main thread %u will wait for child thread %u\n", (unsigned int)pthread_self(), (unsigned int)tid2);
   err = pthread_join(tid2, &tret);
-
   if (err != 0)
+  {
     printf("cannot join with thread-2: %s\n", strerror(err));
-
+  }
   printf("child thread %u exit code %d\n", (unsigned int)tid2, (int)tret);
+
+  // Main Thread Exiting
   printf("Main thread %u exiting\n", (unsigned int)pthread_self());
   return 0;
 }

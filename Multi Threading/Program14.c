@@ -1,8 +1,8 @@
 /* To compile this program use the following command */
-/* $ gcc -pthread 14_thread_racecond_without_mutex_example6.c -o 14_thread_racecond_without_mutex_example6.o */
+/* $ gcc -pthread Program14.c -o Program14.o */
 
 /* To run this program use the following command */
-/* $ ./14_thread_racecond_without_mutex_example6.o */
+/* $ ./Program14.o */
 
 #include <stdio.h>
 #include <stdlib.h>
