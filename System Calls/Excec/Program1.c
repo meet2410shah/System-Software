@@ -8,6 +8,7 @@ int main()
     printf("0");
     if (fork() == 0) {
        execl("/bin/echo", "echo", "1", NULL);
+       // Everthing After Exec will never execute!!!
        fork();
        printf("2");
     }
